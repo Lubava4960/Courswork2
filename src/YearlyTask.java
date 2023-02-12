@@ -1,13 +1,13 @@
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class YearlyTask extends Task{
-    public YearlyTask( String title, Type type, int id, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super( title, type, id, dateTime, description);
+
+    public YearlyTask(String title, Task dateTime, String description) throws IncorrectArgumentException {
+        super(title, dateTime, description);
     }
 
     @Override
-    public boolean appearsln() {
+    public boolean appearsln(LocalDate date) {
         return false;
     }
 }

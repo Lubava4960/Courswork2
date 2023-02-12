@@ -1,14 +1,18 @@
-import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+public class DailyTask extends Task {
 
-public class DailyTask extends Task  {
 
-    public DailyTask( String title, Type type, int id, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super( title, type, id, dateTime, description);
+    public DailyTask(String title, Task type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
+        super(title, type, dateTime, description);
     }
 
     @Override
-    public boolean appearsln() {
+    public boolean appearsln(LocalDate  localDate) {
+        LocalDateTime dateTime = this.getDateTime();
         return false;
     }
+
+    // private Object getTaskDateTime() {
+   //}
 }

@@ -1,53 +1,41 @@
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import TaskNotFoundExcepption.TaskNotFoundException;
+
+import java.time.LocalDate;
+import java.util.*;
 
 public class TaskService <T extends Task>{
 
-    public Collection<Task> getRemovedTasks() {
-        return null;
+    public Map<Integer, Task> tasks = new HashMap<>();
+
+    public void addTask(Task task){
+
+        this.tasks.put(task.getId(), task);
+
+    }
+    public Collection<Task>getAllTask(){
+        return this.tasks.values();
+    }
+    public Collection<Task>getTasksForDate(LocalDate date){
+        TreeSet<Task> tasksForDate = new ThreeSet();
+        for(Task task:tasks.values()){
+            if (task.appearsln(date)){
+                tasksForDate.add(task);
+            }
+        }
+        return tasksForDate;
+    }
+    public void removeTask(int id)throws TaskNotFoundException {
+        if (this.tasks.containsKey(id)){
+            this.tasks.remove(id);
+        }else {
+            throw new TaskNotFoundException();
+
+        }
+
+
     }
 
-    public Map<Integer, Set<Task>> getTaskMap() {
-
-        return taskMap;
-    }
-
-    public void setTaskMap(Map<Integer, Set<Task>> taskMap) {
-
-        this.taskMap = taskMap;
-    }
-
-    public TaskService() {
-
-        this.taskMap = null;
-    }
-
-    private Map<Integer, Set<Task>>taskMap;
-    Collection<Task>removedTasks;
-
-    @Override
-    public String toString() {
-        return "TaskService{" +
-                "taskMap=" + taskMap +
-                ", removedTasks=" + removedTasks +
-                '}';
-    }
-
-
-
-    // В сервисе добавлены методы:
-    public void addTask() {
-
-        System.out.println("");
-    }
-
-    public void getTaskOneDay() {
-
-        System.out.println("");
-    }
-    public Task removeId (int id) {
-        return null;
+    private class ThreeSet extends TreeSet<Task> {
     }
 
 

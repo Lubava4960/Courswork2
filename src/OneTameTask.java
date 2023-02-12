@@ -1,13 +1,16 @@
-import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class OneTameTask extends Task{
-    public OneTameTask( String title, Type type, int id, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super( title, type, id, dateTime, description);
+
+
+    public OneTameTask(String title, Task type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
+        super(title, type, dateTime, description);
     }
 
     @Override
-    public boolean appearsln() {
+    public boolean appearsln(LocalDate date) {
+
         return false;
     }
 }

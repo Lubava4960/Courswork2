@@ -1,20 +1,15 @@
-import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class WeeklyTask extends Task{
-    public WeeklyTask( String title, Type type, int id, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super( title,
-                type,
-                id,
-                dateTime,
-                description);
+
+
+    public WeeklyTask(String title, Task type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
+        super(title, type, dateTime, description);
     }
 
     @Override
-    public boolean appearsln() {
-
+    public boolean appearsln(LocalDate date) {
         return false;
     }
-
-
 }

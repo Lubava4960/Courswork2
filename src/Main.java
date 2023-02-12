@@ -29,14 +29,14 @@ public class Main {
         String description = sc.nextLine();
         System.out.println(" Описание задачи "+ description);
 
-        OneTameTask oneTameTask = new OneTameTask(" Покупка", null, 1, LocalDateTime.now(), "хлеб и колбаса");
+        OneTameTask oneTameTask = new OneTameTask(" Покупка",null,  LocalDateTime.now(), "хлеб и колбаса");
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Введите задачу на месяц");
         String MonthlyTask = sc.nextLine();
         System.out.println("Задача на месяц: " + MonthlyTask);
         System.out.println("ТИП Задачи - Личная или рабочая ");
-        String Type2 = sc.nextLine();
-        System.out.println(" Тип задачи " + Type2);
+        String type  = sc.nextLine();
+        System.out.println(" Тип задачи " + Type);
         System.out.println( " Номер задачи ");
         Integer id2 = Integer.valueOf(sc.nextLine());
         System.out.println(" Номер задачи "+id2);
@@ -47,7 +47,7 @@ public class Main {
         String description2 = sc.nextLine();
         System.out.println(" Описание задачи "+ description);
 
-        MonthlyTask monthlyTask = new MonthlyTask(" Покупка", Type.PERSONAL,2, LocalDateTime.now(), " Купить диван");
+        MonthlyTask monthlyTask = new MonthlyTask(" Покупка", null, 2, LocalDateTime.now(), " Купить диван");
         Set<Task> tasks = new HashSet<>();
         tasks.add(oneTameTask);
         tasks.add(monthlyTask);
