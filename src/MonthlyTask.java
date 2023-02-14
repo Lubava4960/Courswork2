@@ -1,9 +1,22 @@
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 
-public abstract class MonthlyTask extends Task {
+public class MonthlyTask extends Task {
 
 
-    public MonthlyTask(String title, Task type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super(title, type, dateTime, description);
+    public MonthlyTask(String title, Type type, int Id, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
+        super(title, type, Id, dateTime, description);
     }
+
+    public boolean appearsln(LocalDateTime date) {
+
+        return false;
+    }
+    @Override
+    public int getId() {
+
+        return 0;
+    }
+
+
 }

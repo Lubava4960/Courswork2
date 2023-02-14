@@ -1,11 +1,14 @@
 import TaskNotFoundExcepption.TaskNotFoundException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class TaskService <T extends Task>{
 
     public Map<Integer, Task> tasks = new HashMap<>();
+    private LocalDateTime LocalDate;
+
 
     public void addTask(Task task){
 
@@ -18,7 +21,7 @@ public class TaskService <T extends Task>{
     public Collection<Task>getTasksForDate(LocalDate date){
         TreeSet<Task> tasksForDate = new ThreeSet();
         for(Task task:tasks.values()){
-            if (task.appearsln(date)){
+            if (task.appearsln(LocalDate)){
                 tasksForDate.add(task);
             }
         }
