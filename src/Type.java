@@ -1,4 +1,4 @@
-public enum Type implements java.lang.reflect.Type {
+public enum Type {
 
     WORK("рабочие задачи"),
     PERSONAL("личные задачи");
@@ -12,4 +12,11 @@ public enum Type implements java.lang.reflect.Type {
     public String getType() {
         return type;
     }
-}
+
+
+
+
+
+    }
+
+

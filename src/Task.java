@@ -1,25 +1,27 @@
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 
 public abstract class Task extends TaskService {
     private int idGenerator=0;
     private String title;
     private Type type;
-    private int Id;
-    private LocalDateTime dateTime;
+    private int id;
+    private LocalDateTime taskDateTime;
     private String description;
 
 
-    public Task(int id) {
-        Id = getIdGenerator();
+    public Task(LocalDateTime taskDateTime) {
+        this.taskDateTime = taskDateTime;
     }
 
-    public Task(String title, Type type, int Id,
+    public Task(String title, Type type,
                 LocalDateTime dateTime, String description) throws
             IncorrectArgumentException {
-        idGenerator++;
+
         if (title == null || title.isEmpty() || title.isBlank())  {
             throw new IncorrectArgumentException(" Значение задачи введено не коректно.");
         } else {
@@ -33,20 +35,14 @@ public abstract class Task extends TaskService {
 
             this.type = type;
         }
+        this.id = idGenerator++;
 
-
-        this.dateTime = dateTime;
         if (description == null || description.isEmpty() || description.isBlank()) {
             this.description = " default ";
         } else {
             this.description = description;
         }
 
-    }
-
-    public int getIdGenerator() {
-
-        return idGenerator;
     }
 
     public void setIdGenerator(int idGenerator) {
@@ -67,47 +63,35 @@ public abstract class Task extends TaskService {
     public void setType(Type type) {
         this.type = type;
 
-
     }
-
     public Type getType() {
         return type;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public int getIdGenerator() {
+        return idGenerator;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public int getId() {
+        return id;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public LocalDateTime getTaskDateTime() {
+        return taskDateTime;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public int compareTo(Task otherTask) {
+        if (otherTask == null) {
+            return 1;
+        }
+        return this.taskDateTime.toLocalTime().compareTo(otherTask.taskDateTime.toLocalTime());
     }
 
-    @Override
-    public String toString() {
-        return "Задача {" +
-                " idGenerator - " + idGenerator +
-                ",  Название задачи: " + title + '\'' +
-                ",  Тип личная или рабочая: " + type +
-                ",  Номер задачи: " + Id +
-                ",  Дата: " + dateTime +
-                ",  Описание задачи: " + description + '\'' +
-                '}';
-    }
+    public abstract boolean appearsIn(LocalDate localDate);
+    public abstract Repeatability getRepeatabilityType();
 
-    public abstract boolean appearsln(LocalDateTime date);
-
-    public abstract int getId();
-}
 

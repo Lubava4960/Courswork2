@@ -6,11 +6,14 @@ package TASK2;
   //      обратном порядке. В случае одинакового количества упоминаний слова должны быть отсортированы по алфавиту.
    //     yourapp the quick brown fox jumps over the lazy dog
 
+
+
 import javax.naming.Name;
 import java.io.BufferedReader;
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.sql.Array;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -61,20 +64,30 @@ public class Task2 {
 
           }
         //Дан List<String>names.
-        //   Удалите первую букву из каждого имени и верните отсортированный список.
+        //   Удалите первую букву из каждого
+        //   имени и верните отсортированный список.
 
-        List<String> names = new ArrayList<>();
-        String name = "Maks";
-        String name2 = "Aleks";
+        List<String> names = new  ArrayList<>();
+        String name = ("Maks");
+        name= name.substring(1);
+        String name2 =("Aleks");
+        name2= name2.substring(1);
         names.add(name);
         names.add(name2);
-        Collections.sort(names);
-        names.remove(1);
         System.out.println(names);
+
+
+
+
+
+
+
+
+
 
     }
 
-}
+   }
 
 
 
