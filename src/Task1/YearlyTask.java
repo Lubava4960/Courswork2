@@ -1,15 +1,19 @@
-import java.lang.reflect.Type;
+package Task1;
+
+import Task1.Repeatability;
+import Task1.Task;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class YearlyTask extends Task {
-    public YearlyTask(String title, Type type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
-        super(title, type, dateTime, description);
+    public YearlyTask(String title, String description, LocalDateTime taskDateTime, TaskType taskType) {
+        super(title, description, taskDateTime, taskType);
     }
 
     @Override
     public boolean appearsIn(LocalDate localDate) {
-        LocalDate taskDate = getTaskDateTime().toLocalDate();
+        LocalDate taskDate = getTaskDataTime().toLocalDate();
         return localDate.equals(taskDate) ||
                 (localDate.isAfter(taskDate) &&
                         localDate.getDayOfMonth() == taskDate.getDayOfMonth() &&
@@ -20,5 +24,4 @@ public class YearlyTask extends Task {
     public Repeatability getRepeatabilityType() {
         return Repeatability.YEARLY;
     }
-
 }
